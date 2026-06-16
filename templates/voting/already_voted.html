@@ -1,0 +1,69 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Already Voted</title>
+
+    <link rel="stylesheet" href="{% static 'css/voting/already_voted.css' %}" />
+  </head>
+
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="status-card glass">
+        <div class="status-icon">🗳️</div>
+
+        <h1>Already Voted</h1>
+
+        <p class="message">
+          You have already voted in
+          <strong>{{ election.title }}</strong>
+        </p>
+
+        <p class="description">
+          One vote per voter per election is allowed to ensure fairness and
+          integrity.
+        </p>
+
+        <div id="countdown" class="countdown">
+          Redirecting to dashboard in 10 seconds...
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="dashboard-btn">
+          Go to Dashboard
+        </a>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+
+    <!-- KEEP ORIGINAL JS EXACTLY -->
+
+    <script>
+      let seconds = 10;
+
+      const timer = setInterval(function () {
+        document.getElementById("countdown").innerText =
+          "Redirecting to dashboard in " + seconds + " seconds...";
+
+        seconds--;
+
+        if (seconds < 0) {
+          clearInterval(timer);
+
+          window.location.href = "/dashboard/";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Election</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/adminpanel/create_election.css' %}"
+    />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <header class="admin-header glass">
+      <div>
+        <h1>🗳 Create Election</h1>
+        <p>Create and schedule new elections.</p>
+      </div>
+
+      <button onclick="history.back()" class="back-btn">← Back</button>
+    </header>
+
+    <main class="container">
+      <div class="form-card glass">
+        <form method="post">
+          {% csrf_token %} {{ form.as_p }}
+
+          <button type="submit" class="submit-btn">Create Election</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

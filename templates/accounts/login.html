@@ -1,0 +1,55 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vision Vote Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/accounts/login.css' %}" />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="login-card glass">
+        <div class="icon">🗳️</div>
+
+        <h1>Login to Vision Vote</h1>
+
+        <p class="subtitle">Enter your Voter ID to receive a secure OTP.</p>
+
+        {% if error_message %}
+        <div class="error-box">{{ error_message }}</div>
+        {% endif %}
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="input-group">
+            <label for="voter_id"> Voter ID </label>
+
+            <input
+              type="text"
+              id="voter_id"
+              name="voter_id"
+              placeholder="Enter your Voter ID"
+              required
+            />
+          </div>
+
+          <button type="submit" class="submit-btn">Send OTP</button>
+        </form>
+
+        <button onclick="history.back()" class="back-btn">← Back</button>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

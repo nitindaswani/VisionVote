@@ -1,0 +1,57 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Election Results</title>
+
+    <link rel="stylesheet" href="{% static 'css/results/results_home.css' %}" />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <section class="hero glass">
+        <h1>📊 Election Results</h1>
+
+        <p>View completed elections and their final results.</p>
+      </section>
+
+      <div class="results-grid">
+        {% for election in ended_elections %}
+
+        <div class="glass result-card">
+          <div class="card-top">
+            <h2>{{ election.title }}</h2>
+
+            <span class="result-badge"> {{ election.election_type }} </span>
+          </div>
+
+          <a href="{% url 'election_results' election.id %}" class="view-btn">
+            View Results →
+          </a>
+        </div>
+
+        {% empty %}
+
+        <div class="glass empty-card">
+          <h3>No election results available yet.</h3>
+        </div>
+
+        {% endfor %}
+      </div>
+
+      <div class="back-wrapper">
+        <button onclick="history.back()" class="back-btn">← Back</button>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

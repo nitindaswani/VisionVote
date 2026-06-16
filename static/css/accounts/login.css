@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+
+  font-family: 'Poppins', sans-serif;
+
+  min-height: 100vh;
+
+  background:
+    linear-gradient(135deg,
+      #fff7fb 0%,
+      #f7fbff 50%,
+      #fffdf7 100%);
+
+  overflow-x: hidden;
+
+  position: relative;
+
+  color: #444;
+}
+
+/* Background Blobs */
+
+.blob {
+
+  position: fixed;
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  opacity: 0.5;
+
+  z-index: -1;
+}
+
+.blob1 {
+
+  width: 300px;
+  height: 300px;
+
+  background: #FFC8DD;
+
+  top: -80px;
+  left: -80px;
+}
+
+.blob2 {
+
+  width: 260px;
+  height: 260px;
+
+  background: #A2D2FF;
+
+  top: 40%;
+  right: -80px;
+}
+
+.blob3 {
+
+  width: 250px;
+  height: 250px;
+
+  background: #CDB4DB;
+
+  bottom: -80px;
+  left: 40%;
+}
+
+/* Container */
+
+.container {
+
+  width: 90%;
+
+  max-width: 1300px;
+
+  margin: auto;
+
+  min-height: 70vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 40px 0;
+}
+
+/* Glass */
+
+.glass {
+
+  background:
+    rgba(255, 255, 255, 0.25);
+
+  backdrop-filter: blur(15px);
+
+  -webkit-backdrop-filter: blur(15px);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.35);
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 8px 24px rgba(31, 38, 135, 0.08);
+}
+
+/* Card */
+
+.login-card {
+
+  width: 100%;
+
+  max-width: 450px;
+
+  padding: 45px 35px;
+
+  text-align: center;
+}
+
+.icon {
+
+  font-size: 4rem;
+
+  margin-bottom: 15px;
+}
+
+.login-card h1 {
+
+  font-size: 2rem;
+
+  margin-bottom: 10px;
+
+  background:
+    linear-gradient(90deg,
+      #8B5CF6,
+      #EC4899);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+
+  color: #666;
+
+  margin-bottom: 25px;
+}
+
+/* Error */
+
+.error-box {
+
+  background:
+    rgba(239, 68, 68, 0.12);
+
+  color: #b91c1c;
+
+  padding: 12px;
+
+  border-radius: 14px;
+
+  margin-bottom: 20px;
+}
+
+/* Form */
+
+.input-group {
+
+  text-align: left;
+
+  margin-bottom: 20px;
+}
+
+.input-group label {
+
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #555;
+
+  font-weight: 500;
+}
+
+.input-group input {
+
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border: none;
+
+  outline: none;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.55);
+
+  font-size: 1rem;
+
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-group input:focus {
+
+  box-shadow:
+    0 0 0 3px rgba(162, 210, 255, 0.25);
+}
+
+/* Buttons */
+
+.submit-btn {
+
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  color: #333;
+
+  background:
+    linear-gradient(135deg,
+      #BFDBFE,
+      #F9A8D4);
+
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 20px rgba(236, 72, 153, 0.15);
+}
+
+.back-btn {
+
+  margin-top: 18px;
+
+  border: none;
+
+  background: none;
+
+  cursor: pointer;
+
+  color: #666;
+
+  font-size: 0.95rem;
+}
+
+.back-btn:hover {
+
+  color: #8B5CF6;
+}
+
+/* Mobile */
+
+@media(max-width:768px) {
+
+  .login-card {
+
+    padding: 35px 25px;
+  }
+
+  .login-card h1 {
+
+    font-size: 1.7rem;
+  }
+}

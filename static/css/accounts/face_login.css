@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,
+      #fff7fb 0%,
+      #f7fbff 50%,
+      #fffdf7 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  color: #444;
+}
+
+/* Blobs */
+
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .5;
+  z-index: -1;
+}
+
+.blob1 {
+  width: 300px;
+  height: 300px;
+  background: #FFC8DD;
+  top: -80px;
+  left: -80px;
+}
+
+.blob2 {
+  width: 250px;
+  height: 250px;
+  background: #A2D2FF;
+  right: -80px;
+  top: 35%;
+}
+
+.blob3 {
+  width: 250px;
+  height: 250px;
+  background: #CDB4DB;
+  bottom: -80px;
+  left: 40%;
+}
+
+/* Container */
+
+.container {
+  width: 90%;
+  max-width: 1300px;
+  margin: auto;
+  min-height: 75vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 0;
+}
+
+/* Glass */
+
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 8px 24px rgba(31, 38, 135, 0.08);
+}
+
+/* Card */
+
+.verification-card {
+  width: 100%;
+  max-width: 800px;
+  padding: 35px;
+  text-align: center;
+}
+
+.icon {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.verification-card h1 {
+  font-size: 2rem;
+
+  background:
+    linear-gradient(90deg,
+      #8B5CF6,
+      #EC4899);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Video */
+
+.camera-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#video {
+  width: 100%;
+  max-width: 650px;
+
+  border-radius: 24px;
+
+  transform: scaleX(-1);
+
+  border: 4px solid rgba(255, 255, 255, 0.5);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Status */
+
+.status-box {
+  margin-top: 20px;
+}
+
+#blinkStatus {
+  display: inline-block;
+
+  padding: 12px 20px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.5);
+
+  color: #555;
+}
+
+/* Mobile */
+
+@media(max-width:768px) {
+
+  .verification-card {
+    padding: 25px;
+  }
+
+  .verification-card h1 {
+    font-size: 1.7rem;
+  }
+}

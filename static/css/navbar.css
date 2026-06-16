@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.navbar {
+    width: 92%;
+    max-width: 1300px;
+
+    margin: 20px auto;
+    padding: 16px 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.05);
+
+    position: sticky;
+    top: 15px;
+    z-index: 1000;
+}
+
+/* Logo */
+
+.nav-logo a {
+    text-decoration: none;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+
+    background: linear-gradient(90deg,
+            #8B5CF6,
+            #EC4899);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Menu */
+
+.nav-menu {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+/* Buttons */
+
+.nav-menu a {
+    text-decoration: none;
+
+    color: #4B5563;
+
+    font-weight: 500;
+
+    padding: 12px 20px;
+
+    border-radius: 14px;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    will-change: transform;
+}
+
+/* Normal hover */
+
+.nav-menu a:hover {
+    background: linear-gradient(135deg,
+            #DBEAFE,
+            #FBCFE8);
+
+    color: #111827;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 16px rgba(168, 85, 247, 0.12);
+}
+
+/* Primary Button */
+
+.nav-primary {
+    background: linear-gradient(135deg,
+            #BFDBFE,
+            #F9A8D4);
+
+    color: #1F2937 !important;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 4px 12px rgba(236, 72, 153, 0.15);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Primary Hover */
+
+.nav-primary:hover {
+    background: linear-gradient(135deg,
+            #93c5fd,
+            #f472b6) !important;
+
+    transform:
+        translateY(-2px) scale(1.03);
+
+    box-shadow:
+        0 10px 25px rgba(236, 72, 153, 0.25);
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+
+        gap: 18px;
+
+        padding: 20px;
+    }
+
+    .nav-logo a {
+        font-size: 1.8rem;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .nav-menu a {
+        padding: 10px 16px;
+    }
+}

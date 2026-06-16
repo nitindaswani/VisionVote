@@ -1,0 +1,43 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vision Vote Registration</title>
+
+    <link rel="stylesheet" href="{% static 'css/accounts/register.css' %}" />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="register-card glass">
+        <div class="icon">📝</div>
+
+        <h1>Vision Vote Registration</h1>
+
+        <p class="subtitle">Register securely to participate in elections.</p>
+
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %} {{ form.as_p }}
+
+          <div class="button-group">
+            <button type="submit" class="submit-btn">Register</button>
+
+            <button type="button" onclick="history.back()" class="back-btn">
+              ← Back
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

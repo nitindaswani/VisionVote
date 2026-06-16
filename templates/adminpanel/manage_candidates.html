@@ -1,0 +1,95 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Candidates</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/adminpanel/manage_candidates.css' %}"
+    />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <header class="admin-header glass">
+      <div>
+        <h1>🧑‍💼 Manage Candidates</h1>
+        <p>Create, edit and manage election candidates.</p>
+      </div>
+
+      <button onclick="history.back()" class="back-btn">← Back</button>
+    </header>
+
+    <main class="container">
+      <!-- Messages -->
+      {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Create Candidate -->
+      <div class="top-actions">
+        <a href="{% url 'create_candidate' %}" class="create-btn">
+          ➕ Create Candidate
+        </a>
+      </div>
+
+      <!-- Table -->
+
+      <div class="table-wrapper glass">
+        <table>
+          <thead>
+            <tr>
+              <th>Candidate ID</th>
+              <th>Name</th>
+              <th>Party</th>
+              <th>Slogan</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for candidate in candidates %}
+
+            <tr>
+              <td>{{ candidate.candidate_id }}</td>
+
+              <td>{{ candidate.name }}</td>
+
+              <td>{{ candidate.party_name }}</td>
+
+              <td>{{ candidate.slogan }}</td>
+
+              <td class="actions">
+                <a
+                  href="{% url 'edit_candidate' candidate.id %}"
+                  class="edit-btn"
+                >
+                  Edit
+                </a>
+
+                <a
+                  href="{% url 'delete_candidate' candidate.id %}"
+                  class="delete-btn"
+                  onclick="return confirm('Delete this candidate?');"
+                >
+                  Delete
+                </a>
+              </td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

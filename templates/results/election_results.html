@@ -1,0 +1,106 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ election.title }}</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/results/election_results.css' %}"
+    />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <!-- Hero Section -->
+      <section class="hero glass">
+        <h1>{{ election.title }}</h1>
+        <p>Election Results Dashboard</p>
+      </section>
+
+      {% if winner %}
+      <section class="winner-card glass">
+        <div class="winner-left">
+          <div class="winner-icon">🏆</div>
+
+          <div class="winner-info">
+            <h2>{{ winner.candidate__name }}</h2>
+
+            <p>
+              <strong>Party:</strong>
+              {{ winner.candidate__party_name }}
+            </p>
+
+            <p>
+              <strong>Total Votes:</strong>
+              {{ total_votes }}
+            </p>
+          </div>
+        </div>
+
+        <a
+          href="{% url 'export_results_csv' election.id %}"
+          class="download-btn"
+        >
+          📥 Download CSV
+        </a>
+      </section>
+      {% endif %}
+
+      <section>
+        <h2 class="section-title">📊 Candidate Results</h2>
+
+        <div class="results-grid">
+          {% for result in results %}
+
+          <div class="result-card glass">
+            <h3>{{ result.candidate__name }}</h3>
+
+            <p class="party">{{ result.candidate__party_name }}</p>
+
+            <div class="stats">
+              <div>
+                <span>Votes</span>
+                <strong> {{ result.total_votes }} </strong>
+              </div>
+
+              <div>
+                <span>Percentage</span>
+                <strong> {{ result.percentage }}% </strong>
+              </div>
+            </div>
+
+            <div class="progress">
+              <div
+                class="progress-fill"
+                style="width: {{ result.percentage }}%;"
+              ></div>
+            </div>
+          </div>
+
+          {% empty %}
+
+          <div class="empty-card glass">
+            <h3>No votes recorded.</h3>
+          </div>
+
+          {% endfor %}
+        </div>
+      </section>
+
+      <div class="back-wrapper">
+        <button class="back-btn" onclick="history.back()">← Back</button>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

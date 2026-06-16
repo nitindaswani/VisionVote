@@ -1,0 +1,46 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Registration OTP</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/accounts/verify_registration_otp.css' %}"
+    />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="otp-card glass">
+        <div class="icon">✉️</div>
+
+        <h1>Email Verification</h1>
+
+        <p class="subtitle">
+          Enter the OTP sent to your registered email address.
+        </p>
+
+        {% if error_message %}
+        <div class="error-box">{{ error_message }}</div>
+        {% endif %}
+
+        <form method="POST">
+          {% csrf_token %} {{ form.as_p }}
+
+          <button type="submit" class="submit-btn">Verify OTP</button>
+        </form>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

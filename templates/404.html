@@ -1,0 +1,44 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Page Not Found</title>
+
+    <link rel="stylesheet" href="{% static 'css/404.css' %}" />
+  </head>
+
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="error-card glass">
+        <div class="error-number">404</div>
+
+        <h1>Page Not Found</h1>
+
+        <p class="description">
+          The page you are looking for doesn't exist or may have been moved.
+        </p>
+
+        <div class="button-group">
+          <a href="{% url 'accounts:login' %}" class="primary-btn">
+            Go to Login
+          </a>
+
+          <a href="{% url 'home' %}" class="secondary-btn"> Go to Home </a>
+        </div>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

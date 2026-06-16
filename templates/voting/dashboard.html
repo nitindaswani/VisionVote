@@ -1,0 +1,99 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Vision Vote Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'css/voting/dashboard.css' %}" />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <!-- Profile Card -->
+
+      <section class="profile-card glass">
+        <div class="profile-left">
+          <div class="avatar">👤</div>
+
+          <div>
+            <h1>Welcome {{ user.full_name }}</h1>
+
+            <p>
+              <strong>Voter ID:</strong>
+              {{ user.voter_id }}
+            </p>
+
+            <p>
+              <strong>State:</strong>
+              {{ user.state }}
+            </p>
+          </div>
+        </div>
+
+        <a href="{% url 'accounts:logout' %}" class="logout-btn"> Logout </a>
+      </section>
+
+      <!-- Voting History -->
+
+      <section class="glass section-card">
+        <h2>🗳 Your Voting History</h2>
+
+        <div class="history-list">
+          {% for vote in user_votes %}
+
+          <div class="history-item">
+            <span class="check"> ✓ </span>
+
+            <div>
+              <h4>{{ vote.election.title }}</h4>
+
+              <p>{{ vote.voted_at }}</p>
+            </div>
+          </div>
+
+          {% empty %}
+
+          <div class="empty-state">No elections voted yet.</div>
+
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- Eligible Elections -->
+
+      <section class="glass section-card">
+        <h2>🏛 Eligible Elections</h2>
+
+        <div class="election-grid">
+          {% for election in eligible_elections %}
+
+          <a
+            href="{% url 'election_detail' election.id %}"
+            class="election-card"
+          >
+            <h3>{{ election.title }}</h3>
+
+            <span class="type-badge"> {{ election.election_type }} </span>
+          </a>
+
+          {% empty %}
+
+          <div class="empty-state">No active elections.</div>
+
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

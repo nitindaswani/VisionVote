@@ -1,0 +1,86 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vision Vote Admin</title>
+
+    <link rel="stylesheet" href="{% static 'css/adminpanel/dashboard.css' %}" />
+  </head>
+
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <header class="admin-header glass">
+      <div>
+        <h1>🛡 Vision Vote Admin</h1>
+        <p>Administrator Dashboard</p>
+      </div>
+
+      <a href="{% url 'admin_logout' %}" class="logout-btn"> Logout </a>
+    </header>
+
+    <main class="container">
+      <!-- Statistics -->
+
+      <section class="stats-grid">
+        <div class="stat-card glass">
+          <h3>👥 Users</h3>
+          <span>{{ total_users }}</span>
+        </div>
+
+        <div class="stat-card glass">
+          <h3>🧑‍💼 Candidates</h3>
+          <span>{{ total_candidates }}</span>
+        </div>
+
+        <div class="stat-card glass">
+          <h3>🗳 Votes</h3>
+          <span>{{ total_votes }}</span>
+        </div>
+
+        <div class="stat-card glass">
+          <h3>🏛 Elections</h3>
+          <span>{{ total_elections }}</span>
+        </div>
+
+        <div class="stat-card glass">
+          <h3>🟢 Active</h3>
+          <span>{{ active_elections }}</span>
+        </div>
+
+        <div class="stat-card glass">
+          <h3>🔴 Ended</h3>
+          <span>{{ ended_elections }}</span>
+        </div>
+      </section>
+
+      <!-- Actions -->
+
+      <section class="actions glass">
+        <h2>⚙ Admin Actions</h2>
+
+        <div class="action-grid">
+          <a href="{% url 'manage_users' %}" class="action-btn">
+            👥 Manage Users
+          </a>
+
+          <a href="{% url 'manage_elections' %}" class="action-btn">
+            🗳 Manage Elections
+          </a>
+
+          <a href="{% url 'manage_candidates' %}" class="action-btn">
+            🧑‍💼 Manage Candidates
+          </a>
+
+          <a href="{% url 'assign_candidate' %}" class="action-btn">
+            🔗 Assign Candidate to Election
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

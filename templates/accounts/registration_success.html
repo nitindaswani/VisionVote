@@ -1,0 +1,49 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Successful</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/accounts/registration_success.css' %}"
+    />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="success-card glass">
+        <div class="success-icon">✅</div>
+
+        <h1>Registration Successful</h1>
+
+        <p class="subtitle">Your account has been verified successfully.</p>
+
+        <div class="voter-box">
+          <span>Your Voter ID</span>
+          <strong>{{ voter_id }}</strong>
+        </div>
+
+        <p class="email-info">
+          A copy of your Voter ID has been sent to your registered email.
+        </p>
+
+        <div class="button-group">
+          <a href="{% url 'accounts:login' %}" class="primary-btn"> Login </a>
+
+          <a href="{% url 'home' %}" class="secondary-btn"> Go to Home </a>
+        </div>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

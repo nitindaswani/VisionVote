@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+
+  background:
+    linear-gradient(135deg,
+      #f8faff 0%,
+      #fff7fb 50%,
+      #fffdf8 100%);
+
+  color: #444;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background */
+
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.blob1 {
+  width: 300px;
+  height: 300px;
+  background: #A2D2FF;
+  top: -80px;
+  left: -80px;
+}
+
+.blob2 {
+  width: 280px;
+  height: 280px;
+  background: #FFC8DD;
+  bottom: -100px;
+  right: -100px;
+}
+
+/* Glass */
+
+.glass {
+  background: rgba(255, 255, 255, 0.28);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 8px 24px rgba(31, 38, 135, 0.08);
+}
+
+/* Header */
+
+.admin-header {
+  width: 90%;
+  max-width: 1400px;
+
+  margin: 25px auto;
+
+  padding: 25px 35px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header h1 {
+  background:
+    linear-gradient(90deg,
+      #8B5CF6,
+      #EC4899);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.admin-header p {
+  color: #666;
+}
+
+.back-btn {
+  border: none;
+
+  padding: 12px 22px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  background:
+    linear-gradient(135deg,
+      #DBEAFE,
+      #FBCFE8);
+
+  font-weight: 600;
+}
+
+/* Container */
+
+.container {
+  width: 90%;
+  max-width: 1400px;
+
+  margin: auto;
+
+  padding-bottom: 50px;
+}
+
+/* Messages */
+
+.messages {
+  margin-bottom: 20px;
+}
+
+.alert {
+  padding: 14px 18px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+
+  background:
+    rgba(16, 185, 129, 0.12);
+
+  color: #047857;
+}
+
+/* Create */
+
+.top-actions {
+  margin-bottom: 25px;
+}
+
+.create-btn {
+  text-decoration: none;
+
+  padding: 14px 22px;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(135deg,
+      #BFDBFE,
+      #F9A8D4);
+
+  color: #333;
+
+  font-weight: 600;
+}
+
+/* Table */
+
+.table-wrapper {
+  overflow-x: auto;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 18px;
+  text-align: left;
+}
+
+td {
+  border-top:
+    1px solid rgba(0, 0, 0, 0.05);
+}
+
+tr:hover {
+  background:
+    rgba(255, 255, 255, 0.25);
+}
+
+.status-badge {
+  padding: 6px 12px;
+
+  border-radius: 50px;
+
+  background:
+    linear-gradient(135deg,
+      #DBEAFE,
+      #FBCFE8);
+}
+
+/* Actions */
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+
+  text-decoration: none;
+
+  padding: 8px 14px;
+
+  border-radius: 12px;
+
+  color: #333;
+}
+
+.edit-btn {
+  background: #DBEAFE;
+}
+
+.delete-btn {
+  background: #FEE2E2;
+}
+
+@media(max-width:768px) {
+
+  .admin-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+}

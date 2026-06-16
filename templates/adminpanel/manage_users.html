@@ -1,0 +1,109 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Users</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/adminpanel/manage_users.css' %}"
+    />
+  </head>
+  <body>
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <div class="alert {{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <header class="admin-header glass">
+      <div>
+        <h1>👥 Manage Users</h1>
+        <p>Search, verify and manage voter accounts.</p>
+      </div>
+
+      <button onclick="history.back()" class="back-btn">← Back</button>
+    </header>
+
+    <main class="container">
+      <!-- Search -->
+
+      <form method="get" class="search-form glass">
+        <input
+          type="text"
+          name="search"
+          value="{{ search }}"
+          placeholder="Search by voter ID, name or email"
+        />
+
+        <button type="submit">Search</button>
+      </form>
+
+      <!-- Table -->
+
+      <div class="table-wrapper glass">
+        <table>
+          <thead>
+            <tr>
+              <th>Voter ID</th>
+              <th>Name</th>
+              <th>State</th>
+              <th>Email</th>
+              <th>Verified</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for user in users %}
+
+            <tr>
+              <td>{{ user.voter_id }}</td>
+
+              <td>{{ user.full_name }}</td>
+
+              <td>{{ user.state }}</td>
+
+              <td>{{ user.email }}</td>
+
+              <td>
+                {% if user.is_verified %}
+                <span class="badge verified"> Verified </span>
+                {% else %}
+                <span class="badge unverified"> Unverified </span>
+                {% endif %}
+              </td>
+
+              <td>
+                {% if user.is_active %}
+                <span class="badge active"> Active </span>
+                {% else %}
+                <span class="badge disabled"> Disabled </span>
+                {% endif %}
+              </td>
+
+              <td>
+                <a
+                  href="{% url 'toggle_user_status' user.id %}"
+                  class="action-btn"
+                >
+                  {% if user.is_active %} Disable {% else %} Enable {% endif %}
+                </a>
+              </td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

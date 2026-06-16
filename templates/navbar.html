@@ -1,0 +1,23 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+
+<nav class="navbar glass">
+  <div class="nav-logo">
+    <a href="/">🗳 Vision Vote</a>
+  </div>
+
+  <ul class="nav-menu">
+    <li>
+      <a href="{% url 'accounts:login' %}"> Login </a>
+    </li>
+
+    <li>
+      <a href="{% url 'accounts:register' %}"> Register </a>
+    </li>
+
+    <li>
+      <a href="{% url 'results_home' %}" class="nav-primary"> Results </a>
+    </li>
+  </ul>
+</nav>

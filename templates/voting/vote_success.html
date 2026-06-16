@@ -1,0 +1,66 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Vote Successful</title>
+
+    <link rel="stylesheet" href="{% static 'css/voting/vote_success.css' %}" />
+  </head>
+
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="success-card glass">
+        <div class="success-icon">✅</div>
+
+        <h1>Thank You for Voting!</h1>
+
+        <p class="message">Your vote has been securely recorded.</p>
+
+        <p class="description">
+          Vision Vote ensures transparency, privacy, and integrity in every
+          election.
+        </p>
+
+        <div id="countdown" class="countdown">
+          Redirecting to dashboard in 10 seconds...
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="dashboard-btn">
+          Go to Dashboard
+        </a>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+
+    <!-- KEEP ORIGINAL JS EXACTLY -->
+
+    <script>
+      let seconds = 10;
+
+      const timer = setInterval(function () {
+        document.getElementById("countdown").innerText =
+          "Redirecting to dashboard in " + seconds + " seconds...";
+
+        seconds--;
+
+        if (seconds < 0) {
+          clearInterval(timer);
+
+          window.location.href = "/dashboard/";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

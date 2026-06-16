@@ -1,0 +1,36 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results Hidden</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/results/results_hidden.css' %}"
+    />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="glass hidden-card">
+        <div class="icon">🔒</div>
+
+        <h1>Results for "{{ election.title }}" are not available yet.</h1>
+
+        <p>Results become visible only after the election ends.</p>
+
+        <button class="back-btn" onclick="history.back()">← Back</button>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>

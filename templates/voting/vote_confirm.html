@@ -1,0 +1,107 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Confirm Vote</title>
+
+    <link rel="stylesheet" href="{% static 'css/voting/vote_confirm.css' %}" />
+  </head>
+
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="confirm-card glass">
+        <div class="icon">🗳️</div>
+
+        <h1>Confirm Your Vote</h1>
+
+        <div id="timer" class="timer">
+          Time Left: {{ remaining_time }} seconds
+        </div>
+
+        <div class="vote-details">
+          <div class="detail-box">
+            <span>Election</span>
+            <strong>{{ election.title }}</strong>
+          </div>
+
+          <div class="detail-box">
+            <span>Candidate</span>
+            <strong>{{ candidate.name }}</strong>
+          </div>
+        </div>
+
+        <form method="post" action="{% url 'submit_vote' %}">
+          {% csrf_token %}
+
+          <input type="hidden" name="election_id" value="{{ election.id }}" />
+
+          <input type="hidden" name="candidate_id" value="{{ candidate.id }}" />
+
+          <button type="submit" class="confirm-btn">Confirm Vote</button>
+        </form>
+
+        <button onclick="history.back()" class="back-btn">← Go Back</button>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+
+    <!-- KEEP ORIGINAL JS EXACTLY -->
+
+    <script>
+
+      let timeLeft = {{ remaining_time }};
+
+      const timer =
+      setInterval(function(){
+
+          document
+          .getElementById(
+              "timer"
+          )
+          .innerText =
+          "Time Left: "
+          + timeLeft +
+          " seconds";
+
+          timeLeft--;
+
+          if(
+              timeLeft < 0
+          ){
+
+              clearInterval(
+                  timer
+              );
+
+              document.getElementById(
+                  "timer"
+              ).innerText =
+              "Voting session expired. Logging out...";
+
+              setTimeout(function(){
+
+                  window.location.href =
+                  "{% url 'accounts:logout' %}";
+
+              }, 3000);
+
+          }
+
+      },
+      1000
+      );
+    </script>
+  </body>
+</html>

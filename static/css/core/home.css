@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+
+    background:
+        linear-gradient(135deg,
+            #fff7fb 0%,
+            #f7fbff 50%,
+            #fffdf7 100%);
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    color: #444;
+
+    position: relative;
+}
+
+/* Background blobs */
+
+.blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.55;
+    z-index: -1;
+}
+
+.blob1 {
+    width: 320px;
+    height: 320px;
+    background: #ffc8dd;
+    top: -100px;
+    left: -80px;
+}
+
+.blob2 {
+    width: 280px;
+    height: 280px;
+    background: #a2d2ff;
+    top: 40%;
+    right: -100px;
+}
+
+.blob3 {
+    width: 260px;
+    height: 260px;
+    background: #cdb4db;
+    bottom: -80px;
+    left: 40%;
+}
+
+/* Global Glass */
+
+.glass {
+    background: rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow:
+        0 8px 32px rgba(31, 38, 135, 0.08);
+
+    border-radius: 28px;
+}
+
+/* Container */
+
+.container {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+    padding: 30px 0 50px;
+}
+
+/* Hero */
+
+.hero {
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+
+    background:
+        linear-gradient(90deg,
+            #7b61ff,
+            #ff7eb3);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Sections */
+
+.section {
+    margin-bottom: 50px;
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: #555;
+}
+
+/* Grid */
+
+.card-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 25px;
+}
+
+/* Cards */
+
+.election-card {
+    padding: 25px;
+    transition: 0.3s;
+}
+
+.election-card:hover {
+    transform:
+        translateY(-8px) scale(1.02);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card-top h3 {
+    font-size: 1.2rem;
+}
+
+.info {
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Badges */
+
+.badge {
+    padding: 7px 15px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.active {
+    background:
+        linear-gradient(135deg,
+            #b8f2e6,
+            #a2d2ff);
+}
+
+.upcoming {
+    background:
+        linear-gradient(135deg,
+            #ffd6a5,
+            #ffc8dd);
+}
+
+/* Filter */
+
+.filter-box {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-box select {
+    padding: 12px 16px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.6);
+
+    min-width: 180px;
+}
+
+.filter-box button {
+    border: none;
+
+    padding: 12px 22px;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(135deg,
+            #a2d2ff,
+            #ffc8dd);
+
+    transition: 0.3s;
+}
+
+.filter-box button:hover {
+    transform: translateY(-2px);
+}
+
+.empty-card {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Mobile */
+
+@media(max-width:768px) {
+
+    .hero {
+        padding: 40px 25px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .filter-box {
+        flex-direction: column;
+    }
+
+    .filter-box select,
+    .filter-box button {
+        width: 100%;
+    }
+
+    .card-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

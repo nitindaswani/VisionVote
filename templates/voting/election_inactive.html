@@ -1,0 +1,70 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Election Inactive</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/voting/election_inactive.css' %}"
+    />
+  </head>
+
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <div class="status-card glass">
+        <div class="status-icon">⏳</div>
+
+        <h1>Election Unavailable</h1>
+
+        <p class="message">
+          This election is currently
+          <strong>{{ election.status }}</strong>.
+        </p>
+
+        <p class="description">
+          The election is not active at the moment. Please return later when
+          voting becomes available.
+        </p>
+
+        <div id="countdown" class="countdown">Redirecting in 10 seconds...</div>
+
+        <a href="{% url 'dashboard' %}" class="dashboard-btn">
+          Go to Dashboard
+        </a>
+      </div>
+    </main>
+
+    {% include 'footer.html' %}
+
+    <!-- KEEP ORIGINAL JS EXACTLY -->
+
+    <script>
+      let seconds = 10;
+
+      const timer = setInterval(function () {
+        document.getElementById("countdown").innerText =
+          "Redirecting in " + seconds + " seconds...";
+
+        seconds--;
+
+        if (seconds < 0) {
+          clearInterval(timer);
+
+          window.location.href = "/dashboard/";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{{ election.title }}</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/voting/election_detail.css' %}"
+    />
+  </head>
+  <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+      <section class="header glass">
+        <h1>{{ election.title }}</h1>
+
+        <div id="timer" class="timer">Time Left: 60 seconds</div>
+      </section>
+
+      <section class="candidate-section">
+        <h2>🗳 Candidates</h2>
+
+        <div class="cards">
+          {% for ec in election_candidates %}
+
+          <div class="card glass">
+            <div class="logo-wrapper">
+              <img
+                src="{{ ec.candidate.party_logo.url }}"
+                alt="{{ ec.candidate.party_name }}"
+              />
+            </div>
+
+            <h3>{{ ec.candidate.name }}</h3>
+
+            <h4>{{ ec.candidate.party_name }}</h4>
+
+            <p>{{ ec.candidate.slogan }}</p>
+
+            <a
+              href="{% url 'vote_confirm' election.id ec.candidate.id %}"
+              class="vote-link"
+            >
+              <button class="vote-btn">Vote</button>
+            </a>
+          </div>
+
+          {% empty %}
+
+          <div class="empty-state glass">No candidates available.</div>
+
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+
+    {% include 'footer.html' %}
+
+    <!-- KEEP YOUR ORIGINAL JS EXACTLY -->
+
+    <script>
+
+      let timeLeft = {{ remaining_time }};
+
+      const timer = setInterval(function () {
+
+        document.getElementById("timer").innerText =
+          "Time Left: " + timeLeft + " seconds";
+
+        if (timeLeft <= 10) {
+          document.getElementById("timer").style.color = "red";
+        }
+
+        timeLeft--;
+
+        if (timeLeft < 0) {
+
+          clearInterval(timer);
+
+          document.getElementById("timer").innerText =
+            "Voting session expired. Logging out...";
+
+          document.querySelectorAll(".vote-btn").forEach((btn) => {
+            btn.disabled = true;
+          });
+
+          document.querySelectorAll(".vote-link").forEach((link) => {
+            link.removeAttribute("href");
+          });
+
+          setTimeout(function () {
+            window.location.href =
+              "{% url 'accounts:logout' %}";
+          }, 5000);
+        }
+
+      }, 1000);
+    </script>
+  </body>
+</html>
