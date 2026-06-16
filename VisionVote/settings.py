@@ -1,3 +1,4 @@
+from decouple import config
 """
 Django settings for VisionVote project.
 
@@ -154,3 +155,9 @@ EMAIL_HOST_USER = 'VisionVote2026@gmail.com'
 EMAIL_HOST_PASSWORD = 'emakawmfpbiakbfs'
 
 DEFAULT_FROM_EMAIL = 'VisionVote2026@gmail.com'
+
+
+
+
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', cast=bool, default=False)
