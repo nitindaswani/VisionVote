@@ -20,6 +20,11 @@ COPY requirements.txt .
 
 RUN pip install --upgrade pip
 RUN pip install "setuptools<81"
+
+# Install pre-built dlib wheel instead of compiling from source
+RUN pip install --no-cache-dir \
+    "dlib==19.24.6"
+
 RUN pip install git+https://github.com/ageitgey/face_recognition_models.git
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -28,6 +33,6 @@ COPY . .
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 8080
+EXPOSE 8000
 
 ENTRYPOINT ["/entrypoint.sh"]
