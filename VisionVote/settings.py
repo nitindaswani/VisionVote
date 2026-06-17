@@ -29,7 +29,9 @@ SECRET_KEY = 'django-insecure-^q0x6c3kciig^_*(a%s=*7lnro7@w61d6*b@q=0id=lsgp#ojd
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost",".onrender.com",]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".onrender.com", "*"]
+# Using "*" is fine for local Docker testing only.
+# For production, replace "*" with your server's domain/IP.
 
 
 # Application definition
@@ -88,10 +90,18 @@ WSGI_APPLICATION = 'VisionVote.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': '/app/data/db.sqlite3',
     }
 }
 
@@ -159,5 +169,4 @@ DEFAULT_FROM_EMAIL = 'VisionVote2026@gmail.com'
 
 
 
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', cast=bool, default=False)
+

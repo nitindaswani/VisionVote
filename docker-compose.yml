@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=admin123
+    volumes:
+      - visionvote_data:/app/data
+      - visionvote_media:/app/media
+
+volumes:
+  visionvote_data:
+  visionvote_media:
