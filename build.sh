@@ -3,6 +3,7 @@ set -e
 
 pip install --upgrade pip
 pip install "setuptools<81"
+pip install cmake
 pip install numpy==2.4.6
 pip install dlib==19.24.2
 pip install face-recognition==1.3.0
