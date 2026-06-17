@@ -196,3 +196,10 @@ DEFAULT_FROM_EMAIL = 'VisionVote2026@gmail.com'
 
 
 
+# Railway / Proxy CSRF fix
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.railway.app",
+    "https://visionvote-production.up.railway.app",
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
