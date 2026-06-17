@@ -179,18 +179,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# google direct mail
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
-EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'VisionVote2026@gmail.com'
+# EMAIL_HOST_PASSWORD = 'emakawmfpbiakbfs'
 
-EMAIL_HOST_USER = 'VisionVote2026@gmail.com'
-EMAIL_HOST_PASSWORD = 'emakawmfpbiakbfs'
-
-DEFAULT_FROM_EMAIL = 'VisionVote2026@gmail.com'
+# DEFAULT_FROM_EMAIL = 'VisionVote2026@gmail.com'
 
 
 
@@ -203,3 +203,13 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+# brevo otp
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp-relay.brevo.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('BREVO_EMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('BREVO_KEY')
+DEFAULT_FROM_EMAIL = os.environ.get('BREVO_EMAIL')
