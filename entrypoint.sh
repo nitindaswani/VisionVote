@@ -27,6 +27,6 @@ python manage.py collectstatic --noinput
 
 echo ">>> Starting server..."
 exec gunicorn VisionVote.wsgi:application \
-    --bind 0.0.0.0:${PORT:-8000} \
+    --bind 0.0.0.0:$PORT \
     --timeout 300 \
     --workers 2
