@@ -8,8 +8,8 @@ python manage.py migrate --noinput
 echo ">>> Creating superuser if not exists..."
 python manage.py shell << 'PYEOF'
 from django.contrib.auth import get_user_model
-User = get_user_model()
 import os
+User = get_user_model()
 
 username = os.environ.get("DJANGO_SUPERUSER_USERNAME", "admin")
 email    = os.environ.get("DJANGO_SUPERUSER_EMAIL", "admin@visionvote.com")
@@ -27,6 +27,6 @@ python manage.py collectstatic --noinput
 
 echo ">>> Starting server..."
 exec gunicorn VisionVote.wsgi:application \
-    --bind 0.0.0.0:8000 \
+    --bind 0.0.0.0:${PORT:-8000} \
     --timeout 300 \
     --workers 2

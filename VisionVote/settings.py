@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-^q0x6c3kciig^_*(a%s=*7lnro7@w61d6*b@q=0id=lsgp#ojd
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".onrender.com", "*"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".onrender.com", ".railway.app", "*"]
 # Using "*" is fine for local Docker testing only.
 # For production, replace "*" with your server's domain/IP.
 
@@ -114,10 +114,20 @@ WSGI_APPLICATION = 'VisionVote.wsgi.application'
 
 
 # for render, we will use this
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join('/tmp', 'db.sqlite3'),
+#     }
+# }
+
+
+
+# for railway, we will use this 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join('/tmp', 'db.sqlite3'),
+        'NAME': '/app/data/db.sqlite3',
     }
 }
 
