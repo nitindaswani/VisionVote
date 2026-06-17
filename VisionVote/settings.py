@@ -90,6 +90,9 @@ WSGI_APPLICATION = 'VisionVote.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
+
+# normally this is used
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -98,10 +101,23 @@ WSGI_APPLICATION = 'VisionVote.wsgi.application'
 # }
 
 
+
+
+# for docker, we will use this
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': '/app/data/db.sqlite3',
+#     }
+# }
+
+
+
+# for render, we will use this
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/app/data/db.sqlite3',
+        'NAME': os.path.join('/tmp', 'db.sqlite3'),
     }
 }
 
