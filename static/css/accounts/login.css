@@ -258,6 +258,8 @@ body {
 
 .back-btn {
 
+  text-decoration: none;
+
   margin-top: 18px;
 
   border: none;

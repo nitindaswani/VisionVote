@@ -221,6 +221,8 @@ input[type="file"] {
 .submit-btn,
 .back-btn {
 
+  text-decoration: none;
+
   flex: 1;
 
   padding: 14px;

@@ -283,7 +283,7 @@ body {
 }
 
 .back-btn {
-
+    text-decoration: none;
     border: none;
 
     padding: 14px 26px;

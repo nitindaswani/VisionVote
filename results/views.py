@@ -14,11 +14,13 @@ def results_home(request):
         end_datetime__lt=timezone.now()
     )
 
+    back_url = request.META.get('HTTP_REFERER', '/')
     return render(
         request,
         "results/results_home.html",
         {
-            "ended_elections": ended_elections
+            "ended_elections": ended_elections,
+            "back_url": back_url
         }
     )
 
@@ -80,6 +82,8 @@ def election_results(
     if results:
 
         winner = results[0]
+        
+    back_url = request.META.get('HTTP_REFERER', '/')
     return render(
         request,
         "results/election_results.html",
@@ -87,7 +91,8 @@ def election_results(
             "election": election,
             "results": results,
             "winner": winner,
-            "total_votes": total_votes
+            "total_votes": total_votes,
+            "back_url": back_url
         }
     )
     

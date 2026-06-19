@@ -160,12 +160,14 @@ def manage_users(request):
             search
         )
 
+    back_url = request.META.get('HTTP_REFERER', '/adminpanel/dashboard/')
     return render(
         request,
         "adminpanel/manage_users.html",
         {
             "users": users,
-            "search": search
+            "search": search,
+            "back_url": back_url
         }
     )
     
@@ -185,12 +187,13 @@ def manage_elections(request):
     elections = Election.objects.all().order_by(
         "-created_at"
     )
-
+    back_url = request.META.get('HTTP_REFERER', '/adminpanel/dashboard/')
     return render(
         request,
         "adminpanel/manage_elections.html",
         {
-            "elections": elections
+            "elections": elections,
+            "back_url": back_url
         }
     )
     
@@ -224,12 +227,13 @@ def create_election(request):
     else:
 
         form = ElectionForm()
-
+    back_url = request.META.get('HTTP_REFERER', '/adminpanel/dashboard/')
     return render(
         request,
         "adminpanel/create_election.html",
         {
-            "form": form
+            "form": form,
+            "back_url": back_url
         }
     )
     
@@ -276,12 +280,14 @@ def edit_election(
             instance=election
         )
 
+    back_url = request.META.get('HTTP_REFERER', '/adminpanel/dashboard/')
     return render(
         request,
         "adminpanel/edit_election.html",
         {
             "form": form,
-            "election": election
+            "election": election,
+            "back_url": back_url
         }
     )
     
@@ -352,11 +358,13 @@ def manage_candidates(request):
         "-created_at"
     )
 
+    back_url = request.META.get('HTTP_REFERER', '/adminpanel/dashboard/')
     return render(
         request,
         "adminpanel/manage_candidates.html",
         {
-            "candidates": candidates
+            "candidates": candidates,
+            "back_url": back_url
         }
     )
     
@@ -397,11 +405,13 @@ def create_candidate(request):
 
         form = CandidateForm()
 
+    back_url = request.META.get('HTTP_REFERER', '/adminpanel/dashboard/')
     return render(
         request,
         "adminpanel/create_candidate.html",
         {
-            "form": form
+            "form": form,
+            "back_url": back_url
         }
     )
     
@@ -453,12 +463,14 @@ def edit_candidate(
             instance=candidate
         )
 
+    back_url = request.META.get('HTTP_REFERER', '/adminpanel/dashboard/')
     return render(
         request,
         "adminpanel/edit_candidate.html",
         {
             "form": form,
-            "candidate": candidate
+            "candidate": candidate,
+            "back_url": back_url
         }
     )   
     
@@ -559,6 +571,7 @@ def assign_candidate(
                     "Candidate assigned successfully."
                 )
 
+                
                 return redirect(
                     "assign_candidate"
                 )
@@ -574,11 +587,13 @@ def assign_candidate(
 
         form = ElectionCandidateForm()
 
+    back_url = request.META.get('HTTP_REFERER', '/adminpanel/dashboard/')
     return render(
         request,
         "adminpanel/assign_candidate.html",
         {
-            "form": form
+            "form": form,
+            "back_url": back_url
         }
     )
     

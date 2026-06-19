@@ -111,7 +111,7 @@ body {
 }
 
 .back-btn {
-
+  text-decoration: none;
   border: none;
 
   padding: 12px 22px;

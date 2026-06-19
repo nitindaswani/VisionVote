@@ -94,7 +94,7 @@ body {
 
 .back-btn {
   border: none;
-
+  text-decoration: none;
   padding: 12px 22px;
 
   border-radius: 14px;

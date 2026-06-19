@@ -113,6 +113,7 @@ body {
 /* Back Button */
 
 .back-btn {
+  text-decoration: none;
 
   border: none;
 

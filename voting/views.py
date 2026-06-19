@@ -14,8 +14,21 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.shortcuts import render
 from voting.models import ElectionCandidate
 
+
+
+from functools import wraps
+
+def login_required_session(view_func):
+    @wraps(view_func)
+    def wrapper(request, *args, **kwargs):
+        if not request.session.get("logged_in_user"):
+            return redirect("accounts:login")
+        return view_func(request, *args, **kwargs)
+    return wrapper
+
 # Create your views here.
 @never_cache
+@login_required_session
 def dashboard(request):
 
     user_id = request.session.get(
@@ -61,6 +74,7 @@ def dashboard(request):
     )
     
 @never_cache
+@login_required_session
 def election_detail(
     request,
     election_id
@@ -160,6 +174,7 @@ def election_detail(
     
     
 @never_cache
+@login_required_session
 def vote_confirm(
     request,
     election_id,
@@ -209,16 +224,19 @@ def vote_confirm(
             return redirect(
                 "accounts:login"
             )
+    back_url = request.META.get('HTTP_REFERER', '/dashboard/')
     return render(
         request,
         "voting/vote_confirm.html",
         {
             "election": election,
             "candidate": candidate,
-            "remaining_time": remaining_time
+            "remaining_time": remaining_time,
+            "back_url": back_url
         }
     )
     
+@login_required_session
 def submit_vote(request):
     remaining = get_remaining_time(request)
 
